@@ -61,8 +61,6 @@ class Blockchain:
         parsed_url = urlparse(address)
         if parsed_url.netloc:
             self.nodes.add(parsed_url.netloc)
-        elif parsed_url.path:
-            self.nodes.add(parsed_url.path)
         else:
             raise ValueError("Invalid URL")
 
