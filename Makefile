@@ -3,7 +3,10 @@ run:
 
 test: export RUN_INTEGRATION_TESTS = 0
 test:
-	coverage run --source=./src -m pytest tests/
+	coverage run --source=./src -m pytest -v tests/
+
+test_execution:
+	pytest -v --log-cli-level=DEBUG
 
 report:
 	coverage report -m
