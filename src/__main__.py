@@ -1,3 +1,4 @@
+import argparse
 from uuid import uuid4
 
 from flask import Flask, jsonify, request
@@ -87,4 +88,15 @@ def full_chain():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    parser = argparse.ArgumentParser(
+        description="Executa a aplicação Flask em uma porta específica."
+    )
+    parser.add_argument(
+        "--port",
+        type=int,
+        default=5000,
+        help="Número da porta para executar a aplicação",
+    )
+    args = parser.parse_args()
+
+    app.run(host="0.0.0.0", port=args.port, debug=True, threaded=True)
