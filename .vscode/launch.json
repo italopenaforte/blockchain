@@ -9,6 +9,7 @@
             "type": "python",
             "request": "launch",
             "module": "src",
+            "args": ["--port", "5000"],
             "console": "integratedTerminal",
             "justMyCode": true
         }
