@@ -8,10 +8,11 @@
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
-            "module": "src",
-            "args": ["--port", "5000"],
+            "program": "src/test_async.py",
+            // "module": "src",
+            // "args": ["--port", "5000"],
             "console": "integratedTerminal",
-            "justMyCode": true
+            "justMyCode": false
         }
     ]
 }
