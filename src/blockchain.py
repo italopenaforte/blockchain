@@ -9,19 +9,20 @@ import requests
 
 class Blockchain:
     def __init__(self):
-        self.chain = []
-        self.current_transactions = []
+        self.chain = []  # stores all the chains of a blockchain
+        self.current_transactions = []  # stores the transactions
         self.nodes = set()
 
         self.new_block(proof=100, previous_hash=1)
 
     def new_block(self, proof, previous_hash=None):
         block = {
-            "index": len(self.chain) + 1,
-            "timestamp": time(),
-            "transactions": self.current_transactions,
-            "proof": proof,
-            "previous_hash": previous_hash or self.hash(self.chain[-1]),
+            "index": len(self.chain) + 1,  # this is the index of a block
+            "timestamp": time(),  # this is a timestamp when the block was created
+            "transactions": self.current_transactions,  # the transactions that was performed
+            "proof": proof,  # proof that this block is immutable
+            "previous_hash": previous_hash
+            or self.hash(self.chain[-1]),  # the hash of the last block created
         }
 
         self.current_transactions = []
@@ -31,9 +32,15 @@ class Blockchain:
         return block
 
     def new_transction(self, sender, recipient, amount):
-        self.current_transactions.append(
-            {"sender": sender, "recipient": recipient, "amount": amount}
-        )
+        # this is a simple transaction that is sending money to a person to another
+        # that could be change to send chuncks of a file
+        # or links from a page
+        transaction = {
+            "sender": sender,  # how is sender the amount
+            "recipient": recipient,  # how is reciving the amout
+            "amount": amount,  # the amount that is transaction
+        }
+        self.current_transactions.append(transaction)
         return self.last_block["index"] + 1
 
     @staticmethod
